@@ -1,0 +1,3 @@
+.idea
+duckdb-connector/build
+duckdb-connector/duckdb_connector.egg-info
