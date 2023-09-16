@@ -136,7 +136,7 @@ class DuckDBConnector(Source):
             raise exc
 
     def crawl_schema_table_metadata(self, conn, database_name, database_schema_name):
-        logger.debug(f"Start crawling the schemas: {database_name}.{database_schema_name}")
+        logger.info(f"Start crawling the schemas: {database_name}.{database_schema_name}")
 
         sql_get_tables = f"SELECT DISTINCT table_name FROM duckdb_tables() WHERE database_name = '{database_name}' and schema_name = '{database_schema_name}'"
         table_list = conn.sql(sql_get_tables).fetchall()

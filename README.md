@@ -42,6 +42,14 @@ COPY connector connector
 COPY setup.py .
 RUN pip install --no-deps .
 ```
+Build and use the new openmetadata-ingestion images in Docker compose:
+```yaml
+  ingestion:
+    container_name: openmetadata_ingestion
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+```
 
 ## Step 5 - Run OpenMetadata with the custom Ingestion image
 
@@ -62,5 +70,7 @@ Note how we are specifying the full module name so that the Ingestion Framework 
 To run the DuckDB Custom Connector, the Python class will be `connector.duckdb_connector.DuckDBConnector` and we'll need
 to set the following Connection Options:
 - `database_name`: The name of DuckDB database
-- `database_schema_name`: The express to filter DuckDB database-schema `(filtered by SQL express: like 'database_schema_name')`
-- `database_file_path`: The path to DuckDB database local file.
+- `database_schema_list`: List database schema splits by comma, eg. `dimensions, facts, marts`
+- `database_file_path`: The path to DuckDB database local file
+
+You can find an example metadata ingestion configuration in the `duckdb_ingetion.yml` file.
