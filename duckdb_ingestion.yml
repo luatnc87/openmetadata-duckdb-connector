@@ -7,7 +7,7 @@ source:
       sourcePythonClass: connector.duckdb_connector.DuckDBConnector
       connectionOptions:
         database_name: adventureworks_dwh
-        database_schema_name: main
+        database_schema_list: date,person,production,sales,dimensions,facts,marts
         database_file_path: /data/duckdb/adventureworks_dwh.duckdb
   sourceConfig:
     config:
